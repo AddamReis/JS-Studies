@@ -29,3 +29,13 @@ console.log(prod1)
 //JSON
 const prod2 = {"nome" : "Vehicle Cyber", "valor" : 15744.55}
 console.log(prod2)
+
+//Hoisting
+console.log('a = ', a)
+var a = 2
+console.log('a = ', a)
+
+/*Cannot access 'b' before initialization*/ 
+console.log('b =', b)
+let b = 2
+console.log('b =', b)
