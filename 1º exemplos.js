@@ -37,5 +37,5 @@ console.log('a = ', a)
 
 /*Cannot access 'b' before initialization*/ 
 console.log('b =', b)
-let b = 2
+let b = 2 
 console.log('b =', b)
