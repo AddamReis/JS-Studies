@@ -41,7 +41,7 @@ let b = 2
 console.log('b =', b)*/
 
 //Destructuring
-const pessoa = {
+/*const pessoa = {
     nome: 'Ana',
     idade: 20,
     endereco: {
@@ -58,3 +58,26 @@ console.log(n, i)
 
 const {endereco: {logradouro, numero, cep}} = pessoa
 console.log(logradouro, numero, cep)
+*/
+
+//Ternary Operator
+const result = nota => nota >= 7 ? 'Aprovado' : 'Reprovado'
+console.log(result(7,8))
+console.log(result(6,5))
+
+//for in
+const notas = [5, 10, 1.2, 7,5, 9]
+for (let i in notas){
+    console.log(i, notas[i])
+}
+
+const pessoas = {
+    nome: 'ana',
+    sobrenome: 'reis',
+    idade: 22,
+    peso: 59
+}
+for (let atr in pessoas){
+    console.log(`${atr} = ${pessoas[atr]}`)
+}
+
