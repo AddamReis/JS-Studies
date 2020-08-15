@@ -37,6 +37,7 @@ val(1)
 */
 
 //Arguments for in
+/*
 function soma(){
     let soma = 0
     for(i in arguments){
@@ -61,3 +62,42 @@ function somay(a =1, b = 1, c =1 ){
     return a + b + c
 }
 console.log(somay(10, 12, 14), somay(0, 0, 0))
+*/
+
+//This & Bind
+const pessoa = {
+    saudacao : 'Ola Mundo',
+    falar(){
+        console.log(this.saudacao)
+    }
+}
+
+pessoa.falar()
+const falar = pessoa.falar
+falar() //conflito entre paradigmas Funcional e OO
+
+const falarPessoa = pessoa.falar.bind(pessoa)
+falarPessoa()
+
+//part 2
+
+function Pessoa(){
+    this.idade =  0
+    const self = this
+    setInterval(function(){
+        self.idade++
+        console.log(self.idade)
+    }/*.bind(this)*/, 1000)
+}
+
+new Pessoa
+
+//Arrow
+let ola = function() {
+    return 'Oi!'
+}
+
+ola = () => 'Ola'
+console.log(ola())
+ola = _ => 'Oi'
+console.log(ola())
