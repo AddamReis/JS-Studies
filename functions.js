@@ -196,7 +196,7 @@ console.log(typeof ferrari)
 
 //Closure é o escopo criado quando uma função é declarada
 //Esse escopo permite a função acessar e manipular veriáveis externas à função
-const x = 'Global'
+/*const x = 'Global'
 
 function fora(){
     const x = 'Local'
@@ -227,3 +227,42 @@ function criarProduto(nome, preco){
 }
 console.log(criarProduto('Ipad', 2199.55))
 console.log(criarProduto('Notebook', 1199.55))
+*/
+
+//Class VS Factory
+//Exemples in Chrome
+class Pessoa {
+    constructor(nome) {
+        this.nome = nome
+    }
+
+    falar() {
+        console.log(`Meu nome é ${this.nome}`)
+    }
+}
+
+const p1 = new Pessoa('João')
+p1.falar()
+
+const criarPessoa = nome => {
+    return {
+        falar: () => console.log(`Meu nome é ${nome}`)
+    }
+}
+
+const p2 = criarPessoa('João')
+p2.falar()
+
+
+//transforming in contructor
+function Pessoas(nome) {
+    this.nome = nome
+
+    this.falar = function() {
+        console.log(`Meu nome é ${this.nome}`)
+    }
+}
+
+const p1 = new Pessoas('João')
+p1.falar()
+console.log(p1.nome)
