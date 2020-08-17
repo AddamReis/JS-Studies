@@ -160,7 +160,7 @@ console.log(notasbaixas3)
 */
 
 //Constructor
-
+/*
 function Carro(velocidadeMaxima = 200, delta = 5) {
     // atributo privado
     let velocidadeAtual = 0
@@ -191,4 +191,20 @@ ferrari.acelerar()
 console.log(ferrari.getVelocidadeAtual())
 
 console.log(typeof Carro)
-console.log(typeof ferrari) 
+console.log(typeof ferrari)
+*/
+
+//Closure é o escopo criado quando uma função é declarada
+//Esse escopo permite a função acessar e manipular veriáveis externas à função
+const x = 'Global'
+
+function fora(){
+    const x = 'Local'
+    function dentro(){
+        return x
+    }
+    return dentro
+}
+
+const minhaFuncao = fora()
+console.log(minhaFuncao())
