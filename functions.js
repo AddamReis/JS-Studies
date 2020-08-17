@@ -208,3 +208,22 @@ function fora(){
 
 const minhaFuncao = fora()
 console.log(minhaFuncao())
+
+//Simple Factory
+function criarPessoa(){
+    return{
+        nome: 'Addam',
+        sobrenome: 'Reis'
+    }
+}
+console.log(criarPessoa())
+
+function criarProduto(nome, preco){
+    return{
+        nome,
+        preco,
+        desconto: 0.1
+    }
+}
+console.log(criarProduto('Ipad', 2199.55))
+console.log(criarProduto('Notebook', 1199.55))
