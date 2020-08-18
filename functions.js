@@ -231,7 +231,7 @@ console.log(criarProduto('Notebook', 1199.55))
 
 //Class VS Factory
 //Exemples in Chrome
-class Pessoa {
+/*class Pessoa {
     constructor(nome) {
         this.nome = nome
     }
@@ -265,4 +265,38 @@ function Pessoas(nome) {
 
 const p1 = new Pessoas('João')
 p1.falar()
-console.log(p1.nome)
+console.log(p1.nome)*/
+
+// IIFE -> Immediately Invoked Function Expression
+//A funcao é chamada na leitura do script imediatamente
+(function() {
+    console.log('Será executado na hora!')
+    console.log('Foge do escopo mais abrangente!')
+})()
+
+//Call Apply
+
+function getPreco(imposto = 0, moeda = 'R$') {
+    return `${moeda} ${this.preco * (1 - this.desc) * (1 + imposto)}`
+}
+
+const produto = {
+    nome: 'Notebook',
+    preco: 4589,
+    desc: 0.15,
+    getPreco
+}
+
+global.preco = 20
+global.desc = 0.1
+console.log(getPreco())
+console.log(produto.getPreco())
+
+const carro = { preco: 49990, desc: 0.20 }
+
+console.log(getPreco.call(carro))
+console.log(getPreco.apply(carro))
+
+//diferença entre Call e Apply é a forma de passar os parâmetros na função
+console.log(getPreco.call(carro, 0.17, '$'))
+console.log(getPreco.apply(global, [0.17, '$'])) 
