@@ -1,5 +1,5 @@
 // pessoa -> 123 -> {...}
-const pessoa = { nome: 'Joao' }
+/*const pessoa = { nome: 'Joao' }
 pessoa.nome = 'Pedro'
 console.log(pessoa)
 
@@ -19,4 +19,23 @@ console.log(pessoa)
 const pessoaConstante = Object.freeze({ nome: 'Joao' })
 pessoaConstante.nome = 'Maria'
 console.log(pessoaConstante)
+*/
 
+//Getter Setter
+//Getter and Setter serve para regrar meu objeto
+const sequencia = {
+    _valor: 1, // convenção
+    get valor() { return this._valor++ },
+    set valor(valor) { 
+        if(valor > this._valor) {
+            this._valor = valor
+        }
+    }
+}
+
+//Neste caso, eu nunca iria ter um retorno < que o valor inicial ( == 1)
+console.log(sequencia.valor, sequencia.valor)
+sequencia.valor = 1000
+console.log(sequencia.valor, sequencia.valor)
+sequencia.valor = 900
+console.log(sequencia.valor, sequencia.valor) 
