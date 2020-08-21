@@ -20,7 +20,7 @@ function MeuObjeto() {}
 console.log(typeof Object, typeof MeuObjeto)
 console.log(Object.prototype, MeuObjeto.prototype)
 */
-
+/*
 Object.prototype.attr0 = '0' // não fazer atribuição diretamente ao prototype!
 
 const avo = { attr1: 'A' } //neste caso, o avô aponta para o prototype
@@ -67,4 +67,26 @@ volvo.acelerarMais(100)
 console.log(volvo.status())
 
 ferrari.acelerarMais(300)
-console.log(ferrari.status()) 
+console.log(ferrari.status()) */
+
+const pai = { nome: 'Pedro', corCabelo: 'preto' }
+
+const filha1 = Object.create(pai) //criando objeto e definindo que pai é o prototype
+filha1.nome = 'Ana'
+console.log(filha1.corCabelo) //shadowing
+
+const filha2 = Object.create(pai, {
+    nome: { value: 'Bia', writable: false, enumerable: true }  //criando objeto, pai definido como prototype e definindo atributos da filha 2
+})
+
+console.log(filha2.nome)
+filha2.nome = 'Carla' //nome Carla não é atribuido pois a definicao do nome é #Writable = false 
+console.log(`${filha2.nome} tem cabelo ${filha2.corCabelo}`)
+
+console.log(Object.keys(filha1)) //retorna as chaves [nome]
+console.log(Object.keys(filha2))
+
+for(let key in filha2) {
+    filha2.hasOwnProperty(key) ? //verifica se a propriedade pertence ao objeto que esta percorrendo no momento (filha 2)
+        console.log(key) : console.log(`Por herança: ${key}`) //neste caso, a key é herdada, então retorna o else
+}
