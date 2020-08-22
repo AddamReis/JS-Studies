@@ -163,7 +163,7 @@ function novo(f, ...params) { // ...mantém os valores do objeto inicial (neste 
 const aula3 = novo(Aula, 'Bem Vindo', 123)
 const aula4 = novo(Aula, 'Até Breve', 456)
 console.log(aula3, aula4)*/
-
+/*
 const produto = Object.preventExtensions({  //não permite que o objeto seja extendido //pode excluir mas não adicionar atributos
     nome: 'Qualquer', preco: 1.99, tag: 'promoção'
 })
@@ -184,4 +184,17 @@ delete pessoa.nome //nome não removido
 pessoa.idade = 29 //idade foi sobrescrita
 console.log(pessoa)
 
-// Object.freeze = selado + valores constantes 
+// Object.freeze = selado + valores constantes
+
+*/
+
+
+//Json é um formato textual que pode ser utilizado por quase todas as linguagens
+//Json não carrega consigo funções, diferente de objeto
+const obj = { a: 1, b: 2, c: 3, soma() { return a + b + c } }
+console.log(JSON.stringify(obj)) //converte apenas os valores do retorno do objeto (não retorna a função)
+
+// console.log(JSON.parse("{ a: 1, b: 2, c: 3 }")) //não é formato válido
+// console.log(JSON.parse("{ 'a': 1, 'b': 2, 'c': 3 }")) //não é formato válido
+console.log(JSON.parse('{ "a": 1, "b": 2, "c": 3 }')) //objeto gerado através da conversão de um JSON
+console.log(JSON.parse('{ "a": 1.7, "b": "string", "c": true, "d": {}, "e": [] }'))
