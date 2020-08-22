@@ -119,7 +119,7 @@ console.log((new MeuObjeto).__proto__ === MeuObjeto.prototype)
 console.log(MeuObjeto.__proto__ === Function.prototype) //objeto tem um prototype que é uma funcao apontando para prototype
 console.log(Function.prototype.__proto__ === Object.prototype)
 console.log(Object.prototype.__proto__ === null) */
-
+/*
 console.log(typeof String) 
 console.log(typeof Array)
 console.log(typeof Object) //tudo é função 
@@ -141,4 +141,25 @@ String.prototype.toString = function () {
     return 'Lascou tudo'
 }
 
-console.log('Teste JS 2'.reverse()) //para este caso, o tostring do return da funcao não é sobrescrito 
+console.log('Teste JS 2'.reverse()) //para este caso, o tostring do return da funcao não é sobrescrito */
+
+function Aula(nome, videoID) {
+    this.nome = nome
+    this.videoID = videoID
+}
+
+const aula1 = new Aula('Bem Vindo', 123)
+const aula2 = new Aula('Até Breve', 456)
+console.log(aula1, aula2)
+
+// simulando o new
+function novo(f, ...params) { // ...mantém os valores do objeto inicial (neste caso aula1 e 2) //concatena em um array
+    const obj = {} //cria um novo objeto
+    obj.__proto__ = f.prototype //f.prototype está apontando para o prototipo da funcao passada, no caso Aula() //associou o prototype da funcao para o prototype do objeto
+    f.apply(obj, params) //paassando para objeto os parametros novos e retornado //#applay executa a funcao passada, neste caso "f"
+    return obj
+}
+
+const aula3 = novo(Aula, 'Bem Vindo', 123)
+const aula4 = novo(Aula, 'Até Breve', 456)
+console.log(aula3, aula4)
