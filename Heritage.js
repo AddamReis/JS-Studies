@@ -69,7 +69,7 @@ console.log(volvo.status())
 ferrari.acelerarMais(300)
 console.log(ferrari.status()) */
 
-const pai = { nome: 'Pedro', corCabelo: 'preto' }
+/*const pai = { nome: 'Pedro', corCabelo: 'preto' }
 
 const filha1 = Object.create(pai) //criando objeto e definindo que pai é o prototype
 filha1.nome = 'Ana'
@@ -89,4 +89,33 @@ console.log(Object.keys(filha2))
 for(let key in filha2) {
     filha2.hasOwnProperty(key) ? //verifica se a propriedade pertence ao objeto que esta percorrendo no momento (filha 2)
         console.log(key) : console.log(`Por herança: ${key}`) //neste caso, a key é herdada, então retorna o else
+}*/
+
+function MeuObjeto() {}
+console.log(MeuObjeto.prototype)
+
+const obj1 = new MeuObjeto
+const obj2 = new MeuObjeto
+console.log(obj1.__proto__ === obj2.__proto__) //todos objetos criados através de uma funcao construtora apontam para o mesmo prototype
+console.log(MeuObjeto.prototype === obj1.__proto__) //ao criar objeto a partir de new, o prototipo aponta para a funcao que criei .prototype
+
+MeuObjeto.prototype.nome = 'Anônimo' //todos atributos criados dentro do prototype, os herdeiros possuiram os mesmos
+MeuObjeto.prototype.falar = function() {
+    console.log(`Bom dia! Meu nome é ${this.nome}!`)
 }
+
+obj1.falar()
+s
+obj2.nome = 'Rafael'
+obj2.falar()
+
+const obj3 = {}
+obj3.__proto__ = MeuObjeto.prototype //criando objeto e definindo o prototype
+obj3.nome = 'Obj3'
+obj3.falar()
+
+//Resumindo
+console.log((new MeuObjeto).__proto__ === MeuObjeto.prototype)
+console.log(MeuObjeto.__proto__ === Function.prototype) //objeto tem um prototype que é uma funcao apontando para prototype
+console.log(Function.prototype.__proto__ === Object.prototype)
+console.log(Object.prototype.__proto__ === null) 
