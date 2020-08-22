@@ -90,7 +90,7 @@ for(let key in filha2) {
     filha2.hasOwnProperty(key) ? //verifica se a propriedade pertence ao objeto que esta percorrendo no momento (filha 2)
         console.log(key) : console.log(`Por herança: ${key}`) //neste caso, a key é herdada, então retorna o else
 }*/
-
+/*
 function MeuObjeto() {}
 console.log(MeuObjeto.prototype)
 
@@ -118,4 +118,27 @@ obj3.falar()
 console.log((new MeuObjeto).__proto__ === MeuObjeto.prototype)
 console.log(MeuObjeto.__proto__ === Function.prototype) //objeto tem um prototype que é uma funcao apontando para prototype
 console.log(Function.prototype.__proto__ === Object.prototype)
-console.log(Object.prototype.__proto__ === null) 
+console.log(Object.prototype.__proto__ === null) */
+
+console.log(typeof String) 
+console.log(typeof Array)
+console.log(typeof Object) //tudo é função 
+
+String.prototype.reverse = function () { 
+    return this.split('').reverse().join('')
+}
+
+console.log('Teste JS'.reverse())
+
+Array.prototype.first = function() { //funcoes não existem no prototype, mas podem ser criadas como reverse  ou first
+    return this[0]
+}
+
+console.log([1, 2, 3, 4, 5].first())
+console.log(['a', 'b', 'c'].first())
+
+String.prototype.toString = function () {
+    return 'Lascou tudo'
+}
+
+console.log('Teste JS 2'.reverse()) //para este caso, o tostring do return da funcao não é sobrescrito 
