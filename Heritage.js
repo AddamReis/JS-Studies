@@ -142,7 +142,7 @@ String.prototype.toString = function () {
 }
 
 console.log('Teste JS 2'.reverse()) //para este caso, o tostring do return da funcao não é sobrescrito */
-
+/*
 function Aula(nome, videoID) {
     this.nome = nome
     this.videoID = videoID
@@ -162,4 +162,26 @@ function novo(f, ...params) { // ...mantém os valores do objeto inicial (neste 
 
 const aula3 = novo(Aula, 'Bem Vindo', 123)
 const aula4 = novo(Aula, 'Até Breve', 456)
-console.log(aula3, aula4)
+console.log(aula3, aula4)*/
+
+const produto = Object.preventExtensions({  //não permite que o objeto seja extendido //pode excluir mas não adicionar atributos
+    nome: 'Qualquer', preco: 1.99, tag: 'promoção'
+})
+console.log('Extensível:', Object.isExtensible(produto)) //isExtensible verifica se o objeto foi criado como extensivo ou nao
+
+produto.nome = 'Borracha' //nome pode ser modificado
+produto.descricao = 'Borracha escolar branca' //descricao nao pode ser incluído
+delete produto.tag //tag pode ser removida
+console.log(produto)
+
+// Object.seal
+const pessoa = { nome: 'Juliana', idade: 35 }
+Object.seal(pessoa) //seal permite que os atributos sejam sobrescritos, mas não removidos e nem adicionados
+console.log('Selado:', Object.isSealed(pessoa)) //verifica se o objeto é selado ou não
+
+pessoa.sobrenome = 'Silva' //atributo nao adicionado
+delete pessoa.nome //nome não removido
+pessoa.idade = 29 //idade foi sobrescrita
+console.log(pessoa)
+
+// Object.freeze = selado + valores constantes 
