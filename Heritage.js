@@ -191,10 +191,44 @@ console.log(pessoa)
 
 //Json é um formato textual que pode ser utilizado por quase todas as linguagens
 //Json não carrega consigo funções, diferente de objeto
-const obj = { a: 1, b: 2, c: 3, soma() { return a + b + c } }
+/*const obj = { a: 1, b: 2, c: 3, soma() { return a + b + c } }
 console.log(JSON.stringify(obj)) //converte apenas os valores do retorno do objeto (não retorna a função)
 
 // console.log(JSON.parse("{ a: 1, b: 2, c: 3 }")) //não é formato válido
 // console.log(JSON.parse("{ 'a': 1, 'b': 2, 'c': 3 }")) //não é formato válido
 console.log(JSON.parse('{ "a": 1, "b": 2, "c": 3 }')) //objeto gerado através da conversão de um JSON
-console.log(JSON.parse('{ "a": 1.7, "b": "string", "c": true, "d": {}, "e": [] }'))
+console.log(JSON.parse('{ "a": 1.7, "b": "string", "c": true, "d": {}, "e": [] }'))*/
+
+class Lancamento {
+    constructor(nome = 'Genérico', valor = 0) {
+        this.nome = nome //adiciona o atributo ao objeto instanciado
+        this.valor = valor
+    }
+}
+
+class CicloFinanceiro {
+    constructor(mes, ano) {
+        this.mes = mes
+        this.ano = ano
+        this.lancamentos = []
+    }
+
+    addLancamentos(...lancamentos) {
+        lancamentos.forEach(l => this.lancamentos.push(l))
+    }
+
+    sumario() {
+        let valorConsolidado = 0
+        this.lancamentos.forEach(l => {
+            valorConsolidado += l.valor
+        })
+        return valorConsolidado
+    }
+}
+
+const salario = new Lancamento('Salario', 45000)  //instanciando objeto com valores
+const contaDeLuz = new Lancamento('Luz', -220)
+
+const contas = new CicloFinanceiro(6, 2018) 
+contas.addLancamentos(salario, contaDeLuz) //passando os objetos para a funcao que está dentro da classe 
+console.log(contas.sumario()) //executa a operação
