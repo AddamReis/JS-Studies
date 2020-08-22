@@ -199,6 +199,7 @@ console.log(JSON.stringify(obj)) //converte apenas os valores do retorno do obje
 console.log(JSON.parse('{ "a": 1, "b": 2, "c": 3 }')) //objeto gerado através da conversão de um JSON
 console.log(JSON.parse('{ "a": 1.7, "b": "string", "c": true, "d": {}, "e": [] }'))*/
 
+/*
 class Lancamento {
     constructor(nome = 'Genérico', valor = 0) {
         this.nome = nome //adiciona o atributo ao objeto instanciado
@@ -232,3 +233,26 @@ const contaDeLuz = new Lancamento('Luz', -220)
 const contas = new CicloFinanceiro(6, 2018) 
 contas.addLancamentos(salario, contaDeLuz) //passando os objetos para a funcao que está dentro da classe 
 console.log(contas.sumario()) //executa a operação
+*/
+
+class Avo {
+    constructor(sobrenome) {
+        this.sobrenome = sobrenome
+    }
+}
+
+class Pai extends Avo { //declarando que a classe Pai Herda da classe Avo
+    constructor(sobrenome, profissao = 'Professor') {
+        super(sobrenome) //super chama a funcao construtora da super classe
+        this.profissao = profissao
+    }
+}
+
+class Filho extends Pai {
+    constructor() {
+        super('Silva')
+    }
+}
+
+const filho = new Filho
+console.log(filho)
