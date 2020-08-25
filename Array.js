@@ -1,4 +1,4 @@
-const pilotos = ['Vettel', 'Alonso', 'Raikkonen', 'Massa']
+/*const pilotos = ['Vettel', 'Alonso', 'Raikkonen', 'Massa']
 pilotos.pop()//remove o ultimo elemento 
 console.log(pilotos)
 
@@ -25,4 +25,15 @@ const algunsPilotos1 = pilotos.slice(2) // novo array a partir do indice informa
 console.log(algunsPilotos1)
 
 const algunsPilotos2 = pilotos.slice(1, 4)
-console.log(algunsPilotos2)
+console.log(algunsPilotos2)*/
+
+const aprovados = ['Agatha', 'Aldo', 'Daniel', 'Raquel']
+
+aprovados.forEach(function(nome, indice) /*callback com 2 parametros*/ {
+    console.log(`${indice + 1}) ${nome}`)
+})
+
+aprovados.forEach(nome => console.log(nome)) //Arrow Apenas com 1 parametro
+
+const exibirAprovados = aprovado => console.log(aprovado) //passando a funcao para uma const
+aprovados.forEach(exibirAprovados) //executando foreach na const
