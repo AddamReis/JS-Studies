@@ -54,7 +54,7 @@ aprovados.forEach2(function(nome, indice) {  //executando os índices do array
 
 //Map pode ser utilizado para mapear os dados de um array, gerar outro array com os dados transformados.
 //O array gerado através do Map terá o mesmo tamanho do array original
-const nums = [1, 2, 3, 4, 5]
+/*const nums = [1, 2, 3, 4, 5]
 
 // For com propósito
 let resultado = nums.map(function(e) { //Por padrão, (e) se refere ao elemento do array
@@ -68,4 +68,19 @@ const triplo = e => e * 3
 const paraDinheiro = e => `R$ ${parseFloat(e).toFixed(2).replace('.', ',')}`
 
 resultado = nums.map(soma10).map(triplo).map(paraDinheiro) //chamada de métodos em sequence para o mesmo array //para cada map foi gerado um novo array
+console.log(resultado)*/
+
+const carrinho = [
+    '{ "nome": "Borracha", "preco": 3.45 }',
+    '{ "nome": "Caderno", "preco": 13.90 }',
+    '{ "nome": "Kit de Lapis", "preco": 41.22 }',
+    '{ "nome": "Caneta", "preco": 7.50 }'
+]
+
+// Retornar um array apenas com os preços
+
+const paraObjeto = json => JSON.parse(json)
+const apenasPreco = produto => produto.preco
+
+const resultado = carrinho.map(paraObjeto).map(apenasPreco)
 console.log(resultado)
