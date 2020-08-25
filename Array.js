@@ -69,7 +69,7 @@ const paraDinheiro = e => `R$ ${parseFloat(e).toFixed(2).replace('.', ',')}`
 
 resultado = nums.map(soma10).map(triplo).map(paraDinheiro) //chamada de métodos em sequence para o mesmo array //para cada map foi gerado um novo array
 console.log(resultado)*/
-
+/*
 const carrinho = [
     '{ "nome": "Borracha", "preco": 3.45 }',
     '{ "nome": "Caderno", "preco": 13.90 }',
@@ -83,4 +83,25 @@ const paraObjeto = json => JSON.parse(json)
 const apenasPreco = produto => produto.preco
 
 const resultado = carrinho.map(paraObjeto).map(apenasPreco)
-console.log(resultado)
+console.log(resultado)*/
+
+Array.prototype.map2 = function(callback) { //Map2 no prototype
+    const newArray = []
+    for (let i = 0; i < this.length; i++) {
+        newArray.push(callback(this[i], i, this)) //(elemento atual #this[], indice #i e o array #this)
+    }
+    return newArray
+}
+
+const carrinho = [
+    '{ "nome": "Borracha", "preco": 3.45 }',
+    '{ "nome": "Caderno", "preco": 13.90 }',
+    '{ "nome": "Kit de Lapis", "preco": 41.22 }',
+    '{ "nome": "Caneta", "preco": 7.50 }'
+]
+
+const paraObjeto = json => JSON.parse(json)
+const apenasPreco = produto => produto.preco
+
+const resultado = carrinho.map2(paraObjeto).map2(apenasPreco)
+console.log(resultado) //O retorno será o mesmo, porém é uma segunda forma de implementar o mesmo
