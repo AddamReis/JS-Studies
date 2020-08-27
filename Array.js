@@ -85,7 +85,7 @@ const apenasPreco = produto => produto.preco
 const resultado = carrinho.map(paraObjeto).map(apenasPreco)
 console.log(resultado)*/
 
-Array.prototype.map2 = function(callback) { //Map2 no prototype
+/*Array.prototype.map2 = function(callback) { //Map2 no prototype
     const newArray = []
     for (let i = 0; i < this.length; i++) {
         newArray.push(callback(this[i], i, this)) //(elemento atual #this[], indice #i e o array #this)
@@ -104,4 +104,22 @@ const paraObjeto = json => JSON.parse(json)
 const apenasPreco = produto => produto.preco
 
 const resultado = carrinho.map2(paraObjeto).map2(apenasPreco)
-console.log(resultado) //O retorno será o mesmo, porém é uma segunda forma de implementar o mesmo
+console.log(resultado) //O retorno será o mesmo, porém é uma segunda forma de implementar o mesmo*/
+
+//Filter é utilizado para filtrar os dados dentro do array
+
+const produtos = [
+    { nome: 'Notebook', preco: 2499, fragil: true },
+    { nome: 'iPad Pro', preco: 4199, fragil: true },
+    { nome: 'Copo de Vidro', preco: 12.49, fragil: true },
+    { nome: 'Copo de Plástico', preco: 18.99, fragil: false }
+]
+
+console.log(produtos.filter(function(p) {
+    return false                            //Para cada elemento (p) passado na callback, ele não estará presente noo array final 
+}))
+
+const caro = produto => produto.preco >= 500 //const que contém função 
+const fragil = produto => produto.fragil
+
+console.log(produtos.filter(caro).filter(fragil)) //passado as duas funcoes, tanto p/ valores acima de 500 quanto p/ fragil == true
