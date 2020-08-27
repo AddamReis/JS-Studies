@@ -124,7 +124,7 @@ const fragil = produto => produto.fragil
 
 console.log(produtos.filter(caro).filter(fragil)) //passado as duas funcoes, tanto p/ valores acima de 500 quanto p/ fragil == true*/
 
-Array.prototype.filter2 = function(callback) {
+/*Array.prototype.filter2 = function(callback) {
     const newArray = []
     for (let i = 0; i < this.length; i++) {
         if(callback(this[i], i, this)) { //elemento, índice e array
@@ -144,5 +144,27 @@ const produtos = [
 const caro = produto => produto.preco >= 500
 const fragil = produto => produto.fragil
 
-console.log(produtos.filter2(caro).filter2(fragil))
+console.log(produtos.filter2(caro).filter2(fragil))*/
 
+//Reduce tem como função "concatenar" os indices  
+// 1º elemento é o acumulador - 2º elemento é o índice atuaal
+
+const alunos = [
+    { nome: 'João', nota: 7.3, bolsista: false },
+    { nome: 'Maria', nota: 9.2, bolsista: true },
+    { nome: 'Pedro', nota: 9.8, bolsista: false },
+    { nome: 'Ana', nota: 8.7, bolsista: true }
+]
+
+console.log(alunos.map(a => a.nota)) //extraindo apenas a nota
+
+const resultado = alunos.map(a => a.nota).reduce(function(acumulador, atual) {
+    console.log(acumulador, atual)
+    return acumulador + atual
+}, 0)
+ 
+// Valor inicial definido como 0, joao foi o primeiro índice somando o inicial (0 + 7.3) ==7.3
+// Na segunda vez da callback, pega o valor resultante anterior (7.3) somando com a maria (7.3 + 9.2) ==16.5
+// Na terceira vez, pegou o resultante (16.6) e somou com pedro (9.8) ==26.3
+// E assim sucessivamento
+console.log(resultado)
