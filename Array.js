@@ -169,7 +169,7 @@ const resultado = alunos.map(a => a.nota).reduce(function(acumulador, atual) {
 // E assim sucessivamento
 console.log(resultado)*/
 
-const alunos = [
+/*const alunos = [
     { nome: 'João', nota: 7.3, bolsista: false },
     { nome: 'Maria', nota: 9.2, bolsista: true },
     { nome: 'Pedro', nota: 9.8, bolsista: false },
@@ -182,4 +182,18 @@ console.log(alunos.map(a => a.bolsista).reduce(todosBolsistas))
 
 // Desafio 2: Algum aluno é bolsista?
 const algumBolsista = (resultado, bolsista) => resultado || bolsista //verifica se algum é bolsista, neste caso verdadeiro
-console.log(alunos.map(a => a.bolsista).reduce(algumBolsista))
+console.log(alunos.map(a => a.bolsista).reduce(algumBolsista))*/
+
+  
+Array.prototype.reduce2 = function(callback, valorInicial) {
+    const indiceInicial = valorInicial ? 0 : 1
+    let acumulador = valorInicial || this[0]
+    for (let i = indiceInicial; i < this.length; i++) {
+        acumulador = callback(acumulador, this[i], i, this)
+    }
+    return acumulador
+}
+
+const soma = (total, valor) => total + valor
+const nums = [1, 2, 3, 4, 5, 6]
+console.log(nums.reduce2(soma, 21)) //callback e vlInicial
