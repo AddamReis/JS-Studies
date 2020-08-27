@@ -148,7 +148,7 @@ console.log(produtos.filter2(caro).filter2(fragil))*/
 
 //Reduce tem como função "concatenar" os indices  
 // 1º elemento é o acumulador - 2º elemento é o índice atuaal
-
+/*
 const alunos = [
     { nome: 'João', nota: 7.3, bolsista: false },
     { nome: 'Maria', nota: 9.2, bolsista: true },
@@ -167,4 +167,19 @@ const resultado = alunos.map(a => a.nota).reduce(function(acumulador, atual) {
 // Na segunda vez da callback, pega o valor resultante anterior (7.3) somando com a maria (7.3 + 9.2) ==16.5
 // Na terceira vez, pegou o resultante (16.6) e somou com pedro (9.8) ==26.3
 // E assim sucessivamento
-console.log(resultado)
+console.log(resultado)*/
+
+const alunos = [
+    { nome: 'João', nota: 7.3, bolsista: false },
+    { nome: 'Maria', nota: 9.2, bolsista: true },
+    { nome: 'Pedro', nota: 9.8, bolsista: false },
+    { nome: 'Ana', nota: 8.7, bolsista: true }
+]
+
+// Desafio 1: Todos os alunos são bolsista?
+const todosBolsistas = (resultado, bolsista) => resultado && bolsista //Verifica se todos são bolsistas, neste caso é false
+console.log(alunos.map(a => a.bolsista).reduce(todosBolsistas))
+
+// Desafio 2: Algum aluno é bolsista?
+const algumBolsista = (resultado, bolsista) => resultado || bolsista //verifica se algum é bolsista, neste caso verdadeiro
+console.log(alunos.map(a => a.bolsista).reduce(algumBolsista))
