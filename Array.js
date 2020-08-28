@@ -185,7 +185,7 @@ const algumBolsista = (resultado, bolsista) => resultado || bolsista //verifica 
 console.log(alunos.map(a => a.bolsista).reduce(algumBolsista))*/
 
   
-Array.prototype.reduce2 = function(callback, valorInicial) {
+/*Array.prototype.reduce2 = function(callback, valorInicial) {
     const indiceInicial = valorInicial ? 0 : 1
     let acumulador = valorInicial || this[0]
     for (let i = indiceInicial; i < this.length; i++) {
@@ -197,3 +197,24 @@ Array.prototype.reduce2 = function(callback, valorInicial) {
 const soma = (total, valor) => total + valor
 const nums = [1, 2, 3, 4, 5, 6]
 console.log(nums.reduce2(soma, 21)) //callback e vlInicial
+*/
+
+  
+const alunos = [
+    { nome: 'João', nota: 7.9 },
+    { nome: 'Maria', nota: 9.2 }
+]
+
+// Imperativo
+let total1 = 0
+for (let i = 0; i < alunos.length; i++) {
+    total1 += alunos[i].nota
+}
+console.log(total1 / alunos.length)
+
+// Declarativo
+const getNota = aluno => aluno.nota
+const soma = (total, atual) => total + atual
+
+const total2 = alunos.map(getNota).reduce(soma)
+console.log(total2 / alunos.length)
