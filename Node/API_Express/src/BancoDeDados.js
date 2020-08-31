@@ -19,4 +19,10 @@ function getProdutos() { //pega todos pelo objetp
     return Object.values(produtos)
 }
 
-module.exports = { salvarProduto, getProduto, getProdutos } //exportando as chamadas
+function excluirProduto(id) {
+    const produto = produtos[id]
+    delete produtos[id]
+    return produto
+}
+
+module.exports = { salvarProduto, getProduto, getProdutos, excluirProduto }//exportando as chamadas

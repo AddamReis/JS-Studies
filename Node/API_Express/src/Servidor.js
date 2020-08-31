@@ -24,6 +24,20 @@ app.post('/produtos', (req, res, next) => { //salvar os proutos
     res.send(produto) // JSON //retornando a resposta
 })
 
+app.put('/produtos/:id', (req, res, next) => { //update pelo ID
+    const produto = bancoDeDados.salvarProduto({
+        id: req.params.id,
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto) // JSON
+})
+
+app.delete('/produtos/:id', (req, res, next) => { //delete passando ID
+    const produto = bancoDeDados.excluirProduto(req.params.id)
+    res.send(produto) // JSON
+})
+
 app.listen(porta, () => {
     console.log(`Servidor está executando na porta ${porta}.`)
 })
